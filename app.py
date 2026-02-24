@@ -22,8 +22,6 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
-app = Flask(__name__)
-
 @app.route('/')
 def home():
     sql = """
