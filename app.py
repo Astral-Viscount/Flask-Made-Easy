@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import Flask, g, render_template
 import sqlite3
 
 DATABASE = 'anime.db'
@@ -28,16 +28,15 @@ app = Flask(__name__)
 def home():
     sql = """
         SELECT 
-            Anime.image,
             Anime.title,
+            Anime.image,
             Anime.episodes,
-            Anime.mal_id
+            Anime.release_date,
+            Anime.id
         FROM Anime;
     """
-    
-
     results = query_db(sql)
-    return str(results)
+    return render_template("home.html", results=results)
 
 @app.route("/anime/<int:id>")
 def anime(id):
@@ -60,7 +59,7 @@ def anime(id):
         GROUP BY Anime.id;
     """
     result = query_db(sql, (id,), True)
-    return str(result)
+    return render_template("anime.html", anime=result)
 
 if __name__ == "__main__":
     app.run(debug=True)

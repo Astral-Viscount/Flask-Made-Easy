@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="two-column anime-detail">
+
+    <!-- LEFT COLUMN: IMAGE -->
+    <div>
+        <img src="{{ anime[1] }}" alt="{{ anime[2] }}" class="anime-poster">
+    </div>
+
+    <!-- RIGHT COLUMN: INFO -->
+    <div class="anime-info">
+        <h2>{{ anime[2] }}</h2>
+
+        <p><strong>Episodes:</strong> {{ anime[4] }}</p>
+        <p><strong>Score:</strong> ⭐ {{ anime[7] }}</p>
+        <p><strong>Release Date:</strong> {{ anime[8] }}</p>
+        <p><strong>Theme:</strong> {{ anime[6] }}</p>
+        <p><strong>Genres:</strong> {{ anime[5] }}</p>
+        <p><strong>MAL ID:</strong> {{ anime[9] }}</p>
+
+        <h3>Synopsis</h3>
+        <p>{{ anime[3] }}</p>
+    </div>
+
+</div>
+{% endblock %}

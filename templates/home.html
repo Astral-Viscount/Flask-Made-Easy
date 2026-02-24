@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="three-column anime-grid">
+
+    {% for anime in results %}
+    <a href="{{ url_for('anime', id=anime[4]) }}" class="anime-card">
+
+        <div class="w3-card-4 anime-card-inner">
+            <img src="{{ anime[1] }}" alt="{{ anime[0] }}" class="anime-image">
+
+            <div class="anime-card-text">
+                <h3>{{ anime[0] }}</h3>
+                <p>Episodes: {{ anime[2] }}</p>
+                <p>Release: {{ anime[3] }}</p>
+            </div>
+        </div>
+
+    </a>
+    {% endfor %}
+
+</div>
+{% endblock %}
