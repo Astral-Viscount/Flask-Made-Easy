@@ -1,0 +1,27 @@
+-- database: ./anime.db
+
+SELECT * FROM Anime;
+
+SELECT 
+    Anime.image,
+    Anime.title,
+    Anime.episodes,
+    Anime.mal_id
+FROM Anime;
+
+SELECT
+  Anime.id,
+  Anime.image,
+  Anime.title,
+  Anime.synopsis,
+  Anime.episodes,
+  GROUP_CONCAT(Genres.name, ', ') AS genres,
+  Anime.theme,
+  Anime.score,
+  Anime.release_date,
+  Anime.mal_id
+FROM Anime
+LEFT JOIN AnimeGenres ON Anime.id = AnimeGenres.anime_id
+LEFT JOIN Genres ON AnimeGenres.genre_id = Genres.genre_id
+WHERE Anime.id = ?
+GROUP BY Anime.id;
